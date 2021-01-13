@@ -3,19 +3,19 @@ import { Box, Text } from 'grommet';
 
 import FooterButton from './FooterButton';
 import FinishModal from './FinishModal';
-import NewGameModal from './NewGameModal';
+import NewGameModal from '../NewGameModal';
 import { SudokuContext } from '../../context';
 
 const SudokuFooter = () => {
 
-  const { message, onBoardFinish, onBoardReset } = useContext(SudokuContext);
+  const { message, sudokuKey, onBoardReset } = useContext(SudokuContext);
 
   const [finishModal, setFinishModal] = useState(false);
-  const [newGameModal, setNewGameModal] = useState(false);
+  const [newGameModal, setNewGameModal] = useState(true);
 
   useEffect(() => {
-    message === 'Lookin good!' ? setFinishModal(true) : setFinishModal(false);
-  }, [message]);
+    sudokuKey.length === 0 ? setFinishModal(true) : setFinishModal(false);
+  }, [sudokuKey]);
 
   return (
     <Box
@@ -29,12 +29,16 @@ const SudokuFooter = () => {
       >
         <FooterButton onClick={onBoardReset} label='Reset' />
         <FooterButton onClick={() => setNewGameModal(true)} label='New Game' />
-        <FooterButton onClick={onBoardFinish} label='Finish' />
       </Box>
       <Text size='small' color='status-error'>
         {message}
       </Text>
-      { finishModal && <FinishModal setFinishModal={setFinishModal} /> }
+      { finishModal && (
+        <FinishModal
+          setFinishModal={setFinishModal}
+          setNewGameModal={setNewGameModal}
+        />
+       )}
       { newGameModal && <NewGameModal setNewGameModal={setNewGameModal} /> }
     </Box>
   );

@@ -125,7 +125,6 @@ export const removeOneCopyFromStore = (
 
 export const resetBoardState = (
   setSudokuKey,
-  setMessage,
   setActiveRow,
   setActiveCol,
   setActiveBox,
@@ -135,35 +134,34 @@ export const resetBoardState = (
   setActiveRow(0);
   setActiveCol(0);
   setActiveBox(0);
-  setMessage('');
   setActiveValue('');
 };
 
-export const isBoardComplete = (board) => {
-  let loop = false;
-  let code = 0;
-  board.some(row => {
-    row.some(square => {
-      if (square.error) {
-        code = 1;
-        loop = true;
-        return true;
-      } else if (typeof square.number === 'string') {
-        code = 2;
-        loop = true;
-        return true;
-      } else {
-        return false;
-      }
-    });
-    if (loop) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-  return code;
-};
+// export const isBoardComplete = (board) => {
+//   let loop = false;
+//   let code = 0;
+//   board.some(row => {
+//     row.some(square => {
+//       if (square.error) {
+//         code = 1;
+//         loop = true;
+//         return true;
+//       } else if (typeof square.number === 'string') {
+//         code = 2;
+//         loop = true;
+//         return true;
+//       } else {
+//         return false;
+//       }
+//     });
+//     if (loop) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   });
+//   return code;
+// };
 
 export const initializeSudokuStore = (
   setSudokuRowStore,

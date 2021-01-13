@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text } from 'grommet';
+import { Box } from 'grommet';
 
 const FooterButton = ({ label, onClick }) => {
   return (
     <Box
       pad={{ vertical: 'xsmall', horizontal: 'small' }}
-      round='small'
       onClick={onClick}
-      hoverIndicator={{ color: 'lavender' }}
-      background='light-2'
+      hoverIndicator={{ color: 'light-3' }}
+      background='lavender'
       align='center'
       justify='center'
       elevation='medium'
     >
-      <Text>{label}</Text>
+      {label}
     </Box>
   );
 };

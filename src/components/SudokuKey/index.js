@@ -7,7 +7,7 @@ const SudokuKey = () => {
   return (
     <Box
       direction='row'
-      width='366px'
+      width='345px'
       justify='between'
       pad={{ bottom: 'small' }}
     >

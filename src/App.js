@@ -1,12 +1,19 @@
 import React from 'react';
-import { Grommet, Box, Heading } from 'grommet';
+import {
+  Grommet,
+  Box,
+  Heading,
+} from 'grommet';
 
-import { SudokuWrapper, SudokuKey, SudokuFooter } from './components';
+import {
+  SudokuBoard,
+  SudokuKey,
+  SudokuFooter,
+} from './components';
 import { SudokuProvider } from './context';
 import { sudokuTheme } from './theme';
 
 const App = () => {
-
   return (
     <Grommet full theme={sudokuTheme}>
       <Box align='center' pad='medium'>
@@ -15,7 +22,7 @@ const App = () => {
         </Heading>
         <SudokuProvider>
           <SudokuKey />
-          <SudokuWrapper />
+          <SudokuBoard />
           <SudokuFooter />
         </SudokuProvider>
       </Box>

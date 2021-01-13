@@ -7,10 +7,18 @@ export const sudokuTheme = deepMerge(grommet, {
       myColor: '#dcc2ee'
     },
     font: {
-      family: 'Yusei Magic',
+      color: 'black',
+      family: 'Nunito',
     },
   },
   button: {
+    size: {
+      small: {
+        border: {
+          radius: '0px',
+        },
+      },
+    },
     border: {
       radius: '0px'
     }

@@ -3,7 +3,6 @@ import React, { useState, useEffect, createContext } from 'react';
 import {
   handleNewBoard,
   handleBoardReset,
-  handleBoardFinish,
   handleSquareSelection,
   handleSudokuKeyDown,
 } from './handlers';
@@ -25,8 +24,6 @@ const generatedBoard = SudokuGenerator.generate(1)[0].getSheet(0);
 //   [5, "", "", 2, "", 3, "", 8, ""],
 // ];
 
-const SudokuContext = createContext();
-
 const emptyBoard = [
   [],
   [],
@@ -39,10 +36,11 @@ const emptyBoard = [
   [],
 ];
 
+const SudokuContext = createContext();
 const SudokuProvider = ({ children }) => {
   const [board, setBoard] = useState(emptyBoard);
   const [originalBoard, setOriginalBoard] = useState(generatedBoard);
-  const [activeValue, setActiveValue] = useState({});
+  const [activeValue, setActiveValue] = useState('');
   const [activeRow, setActiveRow] = useState(0);  
   const [activeCol, setActiveCol] = useState(0);
   const [activeBox, setActiveBox] = useState(0);
@@ -50,7 +48,6 @@ const SudokuProvider = ({ children }) => {
   const [sudokuColumnStore, setSudokuColumnStore] = useState(emptyBoard);
   const [sudokuBoxStore, setSudokuBoxStore] = useState(emptyBoard);
   const [sudokuKey, setSudokuKey] = useState([1,2,3,4,5,6,7,8,9]);
-  const [message, setMessage] = useState('');
   const [renderBoard, setRenderBoard] = useState(false);
   useEffect(() => {
     initializeBoard(setBoard, setRenderBoard, originalBoard);
@@ -58,7 +55,6 @@ const SudokuProvider = ({ children }) => {
   }, [originalBoard]);
   const context = {
     board,
-    message,
     activeValue,
     activeRow,
     activeCol,
@@ -72,7 +68,6 @@ const SudokuProvider = ({ children }) => {
       setOriginalBoard,
       setRenderBoard,
       setSudokuKey,
-      setMessage,
       setSudokuRowStore,
       setSudokuColumnStore,
       setSudokuBoxStore,
@@ -86,7 +81,6 @@ const SudokuProvider = ({ children }) => {
       setBoard,
       setRenderBoard,
       setSudokuKey,
-      setMessage,
       setSudokuRowStore,
       setSudokuColumnStore,
       setSudokuBoxStore,
@@ -94,10 +88,6 @@ const SudokuProvider = ({ children }) => {
       setActiveCol,
       setActiveBox,
       setActiveValue,
-    ),
-    onBoardFinish: handleBoardFinish(
-      board,
-      setMessage,
     ),
     onSquareSelection: handleSquareSelection(
       board,
@@ -118,7 +108,6 @@ const SudokuProvider = ({ children }) => {
       sudokuBoxStore,
       setActiveValue,
       setSudokuKey,
-      setMessage,
     ),
   };
   return (

@@ -3,7 +3,6 @@ import {
   initializeSudokuStore,
   resetBoardState,
   isKeyStrokeValid,
-  isBoardComplete,
   addOneCopyToStore,
   removeOneCopyFromStore,
   calculateBox,
@@ -19,7 +18,7 @@ export const handleSquareSelection = (
   setActiveRow(newRow);
   setActiveCol(newCol);
   setActiveBox(calculateBox(newRow, newCol));
-  setActiveValue(board[newRow][newCol]?.number);
+  setActiveValue(board[newRow][newCol].number);
 };
 
 export const handleBoardReset = (
@@ -27,7 +26,6 @@ export const handleBoardReset = (
   setBoard,
   setRenderBoard,
   setSudokuKey,
-  setMessage,
   setSudokuRowStore,
   setSudokuColumnStore,
   setSudokuBoxStore,
@@ -46,7 +44,6 @@ export const handleBoardReset = (
   );
   resetBoardState(
     setSudokuKey,
-    setMessage,
     setActiveRow,
     setActiveCol,
     setActiveBox,
@@ -54,23 +51,11 @@ export const handleBoardReset = (
   );
 };
 
-export const handleBoardFinish = (board, setMessage) => () => {
-  const res = isBoardComplete(board);
-  if (res === 1) {
-    setMessage('Something appears to be incorrect!');
-  } else if (res === 2) {
-    setMessage('Please complete the entire board');
-  } else {
-    setMessage('Lookin good!');
-  }
-};
-
 export const handleNewBoard = (
   setBoard,
   setOriginalBoard,
   setRenderBoard,
   setSudokuKey,
-  setMessage,
   setSudokuRowStore,
   setSudokuColumnStore,
   setSudokuBoxStore,
@@ -87,7 +72,6 @@ export const handleNewBoard = (
   initializeSudokuStore(setSudokuRowStore, setSudokuColumnStore, setSudokuBoxStore, newBoard);
   resetBoardState(
     setSudokuKey,
-    setMessage,
     setActiveRow,
     setActiveCol,
     setActiveBox,
@@ -107,7 +91,6 @@ export const handleSudokuKeyDown = (
   sudokuBoxStore,
   setActiveValue,
   setSudokuKey,
-  setMessage,
 ) => (newKey) => {
   
   if (board[activeRow][activeCol].fixed) {
@@ -129,7 +112,6 @@ export const handleSudokuKeyDown = (
         setSudokuKey,
       );
       setActiveValue('');
-      setMessage('');
     }
     return;
   }
@@ -174,6 +156,5 @@ export const handleSudokuKeyDown = (
     sudokuKey,
     setSudokuKey,
   );
-  setMessage('');
   setActiveValue(num);
 };

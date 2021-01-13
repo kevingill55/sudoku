@@ -7,14 +7,10 @@ import { SudokuContext } from '../../context';
 
 const NewGameModal = ({ setNewGameModal }) => {
   const { onNewBoard } = useContext(SudokuContext);
-
   const [difficulty, setDifficulty] = useState(0);
-
   return (
     <Layer>
-      <Box
-        align='center'
-      >
+      <Box align='center'>
         <Box
           alignSelf='end'
           onClick={() => setNewGameModal(false)}
@@ -25,27 +21,17 @@ const NewGameModal = ({ setNewGameModal }) => {
         >
           <Text size='small'>x</Text>
         </Box>
-        <Box
-          pad={{ horizontal: 'large', vertical: 'small' }}
-        >
-          <ModalButton
-            label='Easy'
-            difficulty={0}
-            currentDifficulty={difficulty}
-            setDifficulty={setDifficulty}
-          />
-          <ModalButton
-            label='Medium'
-            difficulty={1}
-            currentDifficulty={difficulty}
-            setDifficulty={setDifficulty}
-          />
-          <ModalButton
-            label='Hard'
-            difficulty={2}
-            currentDifficulty={difficulty}
-            setDifficulty={setDifficulty}
-          />
+        <Box pad={{ horizontal: 'large', vertical: 'small' }}>
+          {
+            ['Easy', 'Medium', 'Hard'].map((label, index) => (
+              <ModalButton
+                label={label}
+                difficulty={index}
+                currentDifficulty={difficulty}
+                setDifficulty={setDifficulty}
+              />
+            ))
+          }
           <Box
             direction='row'
             justify='center'

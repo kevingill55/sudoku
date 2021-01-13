@@ -17,16 +17,16 @@ const SudokuSquare = ({ row, col, border }) => {
   } = useContext(SudokuContext);
 
   const [active, setActive] = useState(false);
+  const [squareStyle, setSquareStyle] = useState({ fontWeight: 'light' });
   
   useEffect(() => {
+    getSquareStyle(board, row, col, activeValue, setSquareStyle);
     if (activeRow === row && activeCol === col) {
       setActive(true);
     } else {
       setActive(false);
     }
-  }, [row, col, activeRow, activeCol]);
-
-  const squareStyle = getSquareStyle(board, row, col, activeValue, activeRow, activeCol);
+  }, [board, row, col, activeValue, activeRow, activeCol]);
 
   return (
     <Box
@@ -35,11 +35,9 @@ const SudokuSquare = ({ row, col, border }) => {
       align='center'
       focusIndicator={false}
       style={squareStyle}
-      background={ active ? (
-        board[activeRow][activeCol].fixed ? 'light-5' : 'lavender'
-      ) : 'none' }
+      background={ active ? 'lavender' : 'none' }
       onClick={() => onSquareSelection(row, col)}
-      hoverIndicator={{ color: 'light-5' }}
+      hoverIndicator={{ color: 'lavender' }}
       border={ border ?  { side: 'right' } : false }
     >
       <input
@@ -49,9 +47,9 @@ const SudokuSquare = ({ row, col, border }) => {
         value={board[row][col]?.number}
         style={{
           border: 'none',
+          outline: 'none',
           boxSizing: 'border-box',
           background: 'transparent',
-          outline: 'none',
           caretColor: 'transparent',
           cursor: 'pointer',
           fontSize: 'inherit',

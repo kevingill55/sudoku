@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Button, Layer, Text } from 'grommet';
 
-const FinishModal = ({ setFinishModal }) => {
+const FinishModal = ({ setFinishModal, setNewGameModal }) => {
   return (
     <Layer>
       <Box
         gap='small'
-        pad='medium'
+        pad={{ horizontal: 'large', vertical: 'medium' }}
         align='center'
       >
-        <Text>Congrats! You completed the puzzle.</Text>
+        <Text>Well done 🤝</Text>
         <Text weight={600}>Play again?</Text>
         <Box
           direction='row'
@@ -20,16 +20,13 @@ const FinishModal = ({ setFinishModal }) => {
         >
           <Button
             primary
-            label='Yes!'
+            label='Go!'
             color='lavender'
             size='small'
-            onClick={() => setFinishModal(false)}
-          />
-          <Button
-            label='Nah'
-            color='lavender'
-            size='small'
-            onClick={() => setFinishModal(false)}
+            onClick={() => {
+              setFinishModal(false);
+              setNewGameModal(true);
+            }}
           />
         </Box>
       </Box>

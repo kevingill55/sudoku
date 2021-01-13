@@ -15,19 +15,20 @@ const SudokuKeyItem = ({ number }) => {
 
   return (
     <Box
-      width='32px'
-      height='32px'
+      width='27px'
+      height='27px'
     >
       {
         showNumber && (
           <Box
-            border={true}
+            border={{ color: 'black' }}
             fill={true}
             round={true}
+            background='lavender'
             align='center'
             justify='center'
           >
-            <Text>{number}</Text>
+            <Text size='small' color='black'>{number}</Text>
           </Box>
         )
       }
