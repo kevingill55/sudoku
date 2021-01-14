@@ -20,9 +20,9 @@ const FinishModal = ({ setFinishModal, setNewGameModal }) => {
         >
           <Button
             primary
-            label='Go!'
+            label='Yes!'
             color='lavender'
-            size='small'
+            size='large'
             onClick={() => {
               setFinishModal(false);
               setNewGameModal(true);

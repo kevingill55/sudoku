@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Grommet,
   Box,
+  Text,
   Heading,
 } from 'grommet';
 
@@ -14,12 +15,20 @@ import { SudokuProvider } from './context';
 import { sudokuTheme } from './theme';
 
 const App = () => {
+  const today = (new Date()).toLocaleDateString();
   return (
     <Grommet full theme={sudokuTheme}>
       <Box align='center' pad='medium'>
-        <Heading style={{ fontWeight: '400' }} size='small'>
-          Sudoku
-        </Heading>
+        <Box
+          align='center'
+          gap='xsmall'
+          pad={{ vertical: 'large' }}
+        >
+          <Heading margin='none'>
+            Sudoku
+          </Heading>
+          <Text size='large'>{today}</Text>
+        </Box>
         <SudokuProvider>
           <SudokuKey />
           <SudokuBoard />

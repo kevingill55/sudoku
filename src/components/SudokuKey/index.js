@@ -7,9 +7,9 @@ const SudokuKey = () => {
   return (
     <Box
       direction='row'
-      width='345px'
+      width='large'
       justify='between'
-      pad={{ bottom: 'small' }}
+      pad={{ bottom: 'medium', horizontal: 'large' }}
     >
       <SudokuKeyItem number={1} />
       <SudokuKeyItem number={2} />

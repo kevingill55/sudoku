@@ -8,7 +8,7 @@ import { SudokuContext } from '../../context';
 
 const SudokuFooter = () => {
 
-  const { message, sudokuKey, onBoardReset } = useContext(SudokuContext);
+  const { sudokuKey, onBoardReset } = useContext(SudokuContext);
 
   const [finishModal, setFinishModal] = useState(false);
   const [newGameModal, setNewGameModal] = useState(true);
@@ -18,11 +18,7 @@ const SudokuFooter = () => {
   }, [sudokuKey]);
 
   return (
-    <Box
-      pad='medium'
-      align='center'
-      gap='medium'
-    >
+    <Box pad={{ vertical: 'large' }}>
       <Box
         direction='row'
         gap='large'
@@ -30,9 +26,6 @@ const SudokuFooter = () => {
         <FooterButton onClick={onBoardReset} label='Reset' />
         <FooterButton onClick={() => setNewGameModal(true)} label='New Game' />
       </Box>
-      <Text size='small' color='status-error'>
-        {message}
-      </Text>
       { finishModal && (
         <FinishModal
           setFinishModal={setFinishModal}

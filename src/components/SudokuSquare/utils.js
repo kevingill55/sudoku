@@ -1,7 +1,8 @@
 export const getSquareStyle = (board, row, col, activeValue, setSquareStyle) => {
   const resObj = {
     fontWeight: '300',
-    fontSize: '22px',
+    fontSize: '3rem',
+    color: 'black',
   };
   if (board[row][col].fixed) {
     resObj.background = '#F2F2F2';

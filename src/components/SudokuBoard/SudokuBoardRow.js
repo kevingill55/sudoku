@@ -66,7 +66,7 @@ const SudokuBoardRow = ({ boxRow, border }) => {
 
 SudokuBoardRow.propTypes = {
   boxRow: PropTypes.number.isRequired,
-  boxCol: PropTypes.number.isRequired,
+  border: PropTypes.bool.isRequired,
 };
 
 export default SudokuBoardRow;

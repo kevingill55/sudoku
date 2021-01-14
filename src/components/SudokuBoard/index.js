@@ -5,8 +5,8 @@ import SudokuBoardRow from './SudokuBoardRow';
 const SudokuBoard = () => {
   return (
     <Box
-      width='380px'
-      height='380px'
+      width='large'
+      height='large'
       justify='between'
       border={{ color: 'black', size: '4px' }}
     >

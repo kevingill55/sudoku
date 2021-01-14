@@ -1,9 +1,12 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Text, Button, Layer } from 'grommet';
+import { FormClose } from 'grommet-icons';
 
 import ModalButton from './ModalButton';
 import { SudokuContext } from '../../context';
+
+const difficulties = ['Easy', 'Medium', 'Hard'];
 
 const NewGameModal = ({ setNewGameModal }) => {
   const { onNewBoard } = useContext(SudokuContext);
@@ -11,20 +14,18 @@ const NewGameModal = ({ setNewGameModal }) => {
   return (
     <Layer>
       <Box align='center'>
-        <Box
+        <Button
           alignSelf='end'
-          onClick={() => setNewGameModal(false)}
-          round={true}
-          hoverIndicator={{ color: 'lavedner' }}
-          pad={{ horizontal: 'xsmall' }}
           focusIndicator={false}
-        >
-          <Text size='small'>x</Text>
-        </Box>
-        <Box pad={{ horizontal: 'large', vertical: 'small' }}>
+          icon={<FormClose color='black' />}
+          onClick={() => setNewGameModal(false)}
+          size='small'
+        />
+        <Box pad={{ horizontal: 'xlarge', vertical: 'medium' }}>
           {
-            ['Easy', 'Medium', 'Hard'].map((label, index) => (
+            difficulties.map((label, index) => (
               <ModalButton
+                key={label}
                 label={label}
                 difficulty={index}
                 currentDifficulty={difficulty}
@@ -35,19 +36,22 @@ const NewGameModal = ({ setNewGameModal }) => {
           <Box
             direction='row'
             justify='center'
-            gap='small'
-            pad={{ top: 'medium' }}
+            pad={{ top: 'large' }}
           >
-            <Button
-              label='Go!'
-              size='small'
-              style={{ borderRadius: '0px' }}
-              color='lavender'
+            <Box
+              fill='horizontal'
+              background='lavender'
               onClick={() => {
                 setNewGameModal(false);
                 onNewBoard(difficulty);
               }}
-            />
+              hoverIndicator={{ color: 'light-5' }}
+              align='center'
+              justify='center;'
+              pad={{ horizontal: 'medium', vertical: 'small' }}
+            >
+              <Text weight={600} size='large'>Go!</Text>
+            </Box>
           </Box>
         </Box>
       </Box>

@@ -22,9 +22,9 @@ const ModalButton = ({
       hoverIndicator={{ color: 'light-5' }}
       align='center'
       justify='center'
-      pad='small'
+      pad='medium'
     >
-      <Text size='small'>{label}</Text>
+      <Text size='large'>{label}</Text>
     </Box>
   );
 };

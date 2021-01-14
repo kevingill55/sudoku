@@ -13,7 +13,7 @@ export const sudokuTheme = deepMerge(grommet, {
   },
   button: {
     size: {
-      small: {
+      large: {
         border: {
           radius: '0px',
         },

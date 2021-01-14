@@ -15,8 +15,8 @@ const SudokuKeyItem = ({ number }) => {
 
   return (
     <Box
-      width='27px'
-      height='27px'
+      width='3rem'
+      height='3rem'
     >
       {
         showNumber && (
@@ -28,7 +28,7 @@ const SudokuKeyItem = ({ number }) => {
             align='center'
             justify='center'
           >
-            <Text size='small' color='black'>{number}</Text>
+            <Text color='black'>{number}</Text>
           </Box>
         )
       }
